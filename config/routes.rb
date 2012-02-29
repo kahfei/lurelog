@@ -1,4 +1,8 @@
 Lurelog::Application.routes.draw do
+  resources :lures
+
+  resources :species
+
   resources :catches
 
   # The priority is based upon order of creation:
