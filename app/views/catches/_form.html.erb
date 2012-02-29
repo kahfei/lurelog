@@ -12,8 +12,7 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :species %><br />
-    <%= f.text_field :species %>
+    <%= f.collection_select(:species_id, @species, :id, :name) %>
   </div>
   <div class="field">
     <%= f.label :date_caught %><br />
@@ -32,7 +31,7 @@
     <%= f.text_field :location %>
   </div>
   <div class="field">
-    <%= f.label :lure %><br />
+    <%= f.collection_select(:lure_id, @lures, :id, :make) %><br />
     <%= f.text_field :lure %>
   </div>
   <div class="actions">

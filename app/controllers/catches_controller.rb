@@ -25,6 +25,8 @@ class CatchesController < ApplicationController
   # GET /catches/new.json
   def new
     @catch = Catch.new
+    @species = Species.all
+    @lures = Lure.all
 
     respond_to do |format|
       format.html # new.html.erb
