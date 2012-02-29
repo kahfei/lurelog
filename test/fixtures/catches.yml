@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  species: 
+  date_caught: 2012-02-29
+  size: 1
+  weight: 1
+  location: MyString
+  lure: 
+
+two:
+  species: 
+  date_caught: 2012-02-29
+  size: 1
+  weight: 1
+  location: MyString
+  lure: 

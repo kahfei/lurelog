@@ -11,6 +11,20 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 0) do
+ActiveRecord::Schema.define(:version => 20120229151504) do
+
+  create_table "catches", :force => true do |t|
+    t.integer  "species_id"
+    t.date     "date_caught"
+    t.integer  "size"
+    t.integer  "weight"
+    t.string   "location"
+    t.integer  "lure_id"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  add_index "catches", ["lure_id"], :name => "index_catches_on_lure_id"
+  add_index "catches", ["species_id"], :name => "index_catches_on_species_id"
 
 end
