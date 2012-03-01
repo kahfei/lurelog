@@ -1,5 +1,6 @@
 <h1>Listing catches</h1>
-
+<%= current_user.email %>
+<%= link_to "Sign out", destroy_user_session_path, :method => :delete %>
 <table>
   <tr>
     <th>Species</th>

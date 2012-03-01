@@ -1,4 +1,5 @@
 class CatchesController < ApplicationController
+    before_filter :authenticate_user!
   # GET /catches
   # GET /catches.json
   def index
