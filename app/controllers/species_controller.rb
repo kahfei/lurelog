@@ -1,4 +1,5 @@
 class SpeciesController < ApplicationController
+  before_filter :verify_is_admin
   # GET /species
   # GET /species.json
   def index
@@ -80,4 +81,14 @@ class SpeciesController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  private
+
+  def verify_is_admin
+    (current_user.nil?) ? redirect_to(root_path) : (redirect_to(root_path) unless current_user.admin?)
+  end
 end
+
+
+
+

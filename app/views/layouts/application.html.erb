@@ -16,6 +16,18 @@
   <% if flash[:alert] %>
       <p class="alert"><%= flash[:alert] %></p>
  <% end %>
+
+<% if user_signed_in? %>
+  <div id="user_meta">
+   <%= current_user.email %>
+   <% if current_user.try(:admin?) %>You have admin permission<% end %>
+   <%= link_to "Sign out", destroy_user_session_path, :method => :delete %>
+  </div>
+  <div id="navigation">
+  </div>
+
+<% end %>
+
 <%= yield %>
 
 </body>
