@@ -20,7 +20,11 @@
 <% if user_signed_in? %>
   <div id="user_meta">
    <%= current_user.email %>
-   <% if current_user.try(:admin?) %>You have admin permission<% end %>
+   <% if current_user.try(:admin?) %>
+   You have admin permission
+   <%= link_to "Species", species_index_path %>
+   <%= link_to "Lures", lures_path %>
+   <% end %>
    <%= link_to "Sign out", destroy_user_session_path, :method => :delete %>
   </div>
   <div id="navigation">
