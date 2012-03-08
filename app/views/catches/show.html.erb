@@ -26,10 +26,14 @@
 </p>
 
 <p>
-  <b>Lure:</b>
-  <%= @catch.lure %>
+  <b>Lure Make:</b>
+  <%= @catch.lure.make %>
 </p>
 
+<p>
+  <b>Lure Model:</b>
+  <%= @catch.lure.model %>
+</p>
 
 <%= link_to 'Edit', edit_catch_path(@catch) %> |
 <%= link_to 'Back', catches_path %>

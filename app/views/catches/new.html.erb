@@ -1,5 +1,23 @@
 <h1>New catch</h1>
+<%= form_for(@catch) do |f| %>
+  <% if @catch.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@catch.errors.count, "error") %> prohibited this catch from being saved:</h2>
 
-<%= render 'form' %>
+      <ul>
+      <% @catch.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+<%= render :partial => "#{@catch.current_step}_step", :locals => {:f => f} %>
+
+<div class="actions">
+  <%= f.submit "Continue" %>
+  <%= f.submit "Back", :name => 'back_button' unless @catch.first_step? %>
+</div>
+<% end %>
 
 <%= link_to 'Back', catches_path %>

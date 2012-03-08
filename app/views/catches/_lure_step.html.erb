@@ -1,0 +1,5 @@
+<h2>Lure Information</h2>
+<p>
+  <%= f.collection_select(:lure_id, Lure.all, :id, :make) %><br />
+  <%= f.collection_select(:lure_id, Lure.all, :id, :model) %><br />
+</p>

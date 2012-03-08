@@ -6,7 +6,9 @@
     <th>Size</th>
     <th>Weight</th>
     <th>Location</th>
-    <th>Lure</th>
+    <th>Lure Make</th>
+    <th>Lure Model</th>
+
     <th></th>
     <th></th>
     <th></th>
@@ -14,12 +16,13 @@
 
 <% @catches.each do |catch| %>
   <tr>
-    <td><%= catch.species %></td>
+    <td><%= catch.species.name %></td>
     <td><%= catch.date_caught %></td>
     <td><%= catch.size %></td>
     <td><%= catch.weight %></td>
     <td><%= catch.location %></td>
-    <td><%= catch.lure %></td>
+    <td><%= catch.lure.make %></td>
+    <td><%= catch.lure.model %></td>
     <td><%= link_to 'Show', catch %></td>
     <td><%= link_to 'Edit', edit_catch_path(catch) %></td>
     <td><%= link_to 'Destroy', catch, confirm: 'Are you sure?', method: :delete %></td>

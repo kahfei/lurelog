@@ -1,5 +1,5 @@
 class CatchesController < ApplicationController
-    before_filter :authenticate_user!
+  before_filter :authenticate_user!
   # GET /catches
   # GET /catches.json
   def index
@@ -27,7 +27,9 @@ class CatchesController < ApplicationController
     @catch = Catch.new
     @species = Species.all
     @lures = Lure.all
-
+    session[:catch_params] ||= {}
+    @catch = Catch.new(session[:catch_params])
+    @catch.current_step = session[:catch_step]
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @catch }
@@ -42,17 +44,34 @@ class CatchesController < ApplicationController
   # POST /catches
   # POST /catches.json
   def create
-    @catch = Catch.new(params[:catch])
-
-    respond_to do |format|
-      if @catch.save
-        format.html { redirect_to @catch, notice: 'Catch was successfully created.' }
-        format.json { render json: @catch, status: :created, location: @catch }
-      else
-        format.html { render action: "new" }
-        format.json { render json: @catch.errors, status: :unprocessable_entity }
-      end
+    session[:catch_params].deep_merge!(params[:catch]) if params[:catch]
+    @catch = Catch.new(session[:catch_params])
+    @catch.current_step = session[:catch_step]
+    if params[:back_button]
+      @catch.previous_step
+    elsif @catch.last_step?
+      @catch.save      
+    else
+      @catch.next_step
     end
+    session[:catch_step] = @catch.current_step
+    if @catch.new_record?
+      render "new"
+    else
+      session[:catch_step] = session[:catch_params] = nil
+      flash[:notice] = "Catch recorded"
+      redirect_to @catch
+    end
+
+    # respond_to do |format|
+    #   if @catch.save
+    #     format.html { redirect_to @catch, notice: 'Catch was successfully created.' }
+    #     format.json { render json: @catch, status: :created, location: @catch }
+    #   else
+    #     format.html { render action: "new" }
+    #     format.json { render json: @catch.errors, status: :unprocessable_entity }
+    #   end
+    # end
   end
 
   # PUT /catches/1

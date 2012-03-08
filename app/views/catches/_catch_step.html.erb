@@ -1,0 +1,7 @@
+<h2>Enter Your Catch</h2>
+<p>
+  <%= f.label :species_id %>
+  <%= f.collection_select(:species_id, Species.all, :id, :name) %>
+  <%= f.label :date_caught %>
+  <%= f.date_select :date_caught %>
+</p>
