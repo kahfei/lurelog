@@ -47,14 +47,16 @@ class CatchesController < ApplicationController
     session[:catch_params].deep_merge!(params[:catch]) if params[:catch]
     @catch = Catch.new(session[:catch_params])
     @catch.current_step = session[:catch_step]
-    if params[:back_button]
-      @catch.previous_step
-    elsif @catch.last_step?
-      @catch.save      
-    else
-      @catch.next_step
+    if @catch.valid?
+      if params[:back_button]
+        @catch.previous_step
+      elsif @catch.last_step?
+        @catch.save if @catch.all_valid?    
+      else
+        @catch.next_step
+      end
+      session[:catch_step] = @catch.current_step
     end
-    session[:catch_step] = @catch.current_step
     if @catch.new_record?
       render "new"
     else

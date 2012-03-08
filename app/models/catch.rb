@@ -1,5 +1,6 @@
 class Catch < ActiveRecord::Base
 	attr_writer :current_step
+  validates_presence_of :size, :weight, :location, :if => lambda { |o| o.current_step == "fish" }
 
   belongs_to :species
   belongs_to :lure
@@ -26,6 +27,13 @@ class Catch < ActiveRecord::Base
 
   def last_step?
     current_step == steps.last
+  end
+
+  def all_valid?
+    steps.all? do |step|
+      self.current_step = step
+      valid?
+    end
   end
 
 end
