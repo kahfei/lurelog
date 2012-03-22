@@ -1,8 +1,12 @@
 Lurelog::Application.routes.draw do
-  devise_for :users
-  resources :lures
-  resources :species
   resources :catches
+  resources :models
+  resources :makes
+
+  devise_for :users
+  resources :species
+  match "/models/for_makeid/:id" => "models#for_makeid"
+
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

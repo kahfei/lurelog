@@ -3,7 +3,8 @@ class Catch < ActiveRecord::Base
   validates_presence_of :size, :weight, :location, :if => lambda { |o| o.current_step == "fish" }
 
   belongs_to :species
-  belongs_to :lure
+  belongs_to :make
+  belongs_to :model
 
   def current_step
   	@current_step || steps.first

@@ -1,5 +1,13 @@
 <h2>Lure Information</h2>
 <p>
-  <%= f.collection_select(:lure_id, Lure.all, :id, :make) %><br />
-  <%= f.collection_select(:lure_id, Lure.all, :id, :model) %><br />
+<!--   <%= f.collection_select(:make_id, Make.all, :id, :name) %><br />
+  <%= f.collection_select(:model_id, Model.all, :id, :name) %><br /> -->
 </p>
+
+<%= f.label :make_id %>
+<%= f.collection_select(:make_id, Make.all, :id, :name, :prompt => "" ) %>
+<%= f.label :model_id %>
+<%= f.collection_select(:model_id, Model.find_all_by_make_id(@catch.make_id), :id, :name, :prompt => "" )%>
+
+
+

@@ -4,6 +4,8 @@ class CatchesController < ApplicationController
   # GET /catches.json
   def index
     @catches = Catch.all
+
+
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @catches }
@@ -103,4 +105,5 @@ class CatchesController < ApplicationController
       format.json { head :no_content }
     end
   end
+
 end

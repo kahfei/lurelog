@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120303011957) do
+ActiveRecord::Schema.define(:version => 20120315133124) do
 
   create_table "catches", :force => true do |t|
     t.integer  "species_id"
@@ -19,12 +19,12 @@ ActiveRecord::Schema.define(:version => 20120303011957) do
     t.integer  "size"
     t.integer  "weight"
     t.string   "location"
-    t.integer  "lure_id"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
+    t.integer  "make_id"
+    t.integer  "model_id"
   end
 
-  add_index "catches", ["lure_id"], :name => "index_catches_on_lure_id"
   add_index "catches", ["species_id"], :name => "index_catches_on_species_id"
 
   create_table "lures", :force => true do |t|
@@ -33,6 +33,21 @@ ActiveRecord::Schema.define(:version => 20120303011957) do
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
+
+  create_table "makes", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "models", :force => true do |t|
+    t.string   "name"
+    t.integer  "make_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "models", ["make_id"], :name => "index_models_on_make_id"
 
   create_table "species", :force => true do |t|
     t.string   "name"

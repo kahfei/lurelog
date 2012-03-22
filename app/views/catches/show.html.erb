@@ -2,7 +2,7 @@
 
 <p>
   <b>Species:</b>
-  <%= @catch.species %>
+  <%= @catch.species.name %>
 </p>
 
 <p>
@@ -27,12 +27,12 @@
 
 <p>
   <b>Lure Make:</b>
-  <%= @catch.lure.make %>
+  <%= @catch.make.name %>
 </p>
 
 <p>
   <b>Lure Model:</b>
-  <%= @catch.lure.model %>
+  <%= @catch.model.name %>
 </p>
 
 <%= link_to 'Edit', edit_catch_path(@catch) %> |
