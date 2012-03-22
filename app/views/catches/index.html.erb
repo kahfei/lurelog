@@ -8,6 +8,7 @@
     <th>Location</th>
     <th>Lure Make</th>
     <th>Lure Model</th>
+    <th>Comments</th>
 
     <th></th>
     <th></th>
@@ -23,6 +24,7 @@
     <td><%= catch.location %></td>
     <td><%= catch.make.name %></td>
     <td><%= catch.model.name %></td>
+    <td><%= catch.comments %></td>
     <td><%= link_to 'Show', catch %></td>
     <td><%= link_to 'Edit', edit_catch_path(catch) %></td>
     <td><%= link_to 'Destroy', catch, confirm: 'Are you sure?', method: :delete %></td>

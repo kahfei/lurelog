@@ -34,6 +34,10 @@
   <b>Lure Model:</b>
   <%= @catch.model.name %>
 </p>
+<p>
+  <b>Comments:</b>
+  <%= @catch.comments %>
+</p>
 
 <%= link_to 'Edit', edit_catch_path(@catch) %> |
 <%= link_to 'Back', catches_path %>
