@@ -1,7 +1,7 @@
 class Catch < ActiveRecord::Base
 	attr_writer :current_step
   validates_presence_of :size, :weight, :location, :if => lambda { |o| o.current_step == "fish" }
-
+  belongs_to :user
   belongs_to :species
   belongs_to :make
   belongs_to :model

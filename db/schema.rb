@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120322141741) do
+ActiveRecord::Schema.define(:version => 20120322222546) do
 
   create_table "catches", :force => true do |t|
     t.integer  "species_id"
@@ -24,6 +24,7 @@ ActiveRecord::Schema.define(:version => 20120322141741) do
     t.integer  "make_id"
     t.integer  "model_id"
     t.text     "comments"
+    t.integer  "user_id"
   end
 
   add_index "catches", ["species_id"], :name => "index_catches_on_species_id"

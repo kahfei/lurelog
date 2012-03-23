@@ -3,7 +3,7 @@ class CatchesController < ApplicationController
   # GET /catches
   # GET /catches.json
   def index
-    @catches = Catch.all
+    @catches = Catch.find_all_by_user_id(current_user.id)
 
 
     respond_to do |format|
@@ -49,6 +49,8 @@ class CatchesController < ApplicationController
     session[:catch_params].deep_merge!(params[:catch]) if params[:catch]
     @catch = Catch.new(session[:catch_params])
     @catch.current_step = session[:catch_step]
+    @catch.user_id = current_user.id
+    
     if @catch.valid?
       if params[:back_button]
         @catch.previous_step
